@@ -24,7 +24,7 @@ public class ComentariosService {
 			return comentarios;
 	}
 				
-	public void setNuevoProducto(Comentario nuevoComentario){
+	public void setNuevoComentario(Comentario nuevoComentario){
 		ObjectContainer	db = null;
 		try {
 			db = Db4oEmbedded.openFile("bdProductos");

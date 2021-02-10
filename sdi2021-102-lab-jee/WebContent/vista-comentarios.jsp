@@ -17,9 +17,8 @@
 		<!-- Contenido -->
 		<div class="container"	id="contenedor-principal">
 			<h2>Comentarios</h2>
-				
+				<div><a href="formComentario.jsp" class="btn btn-default" >	Nuevo Comentario </a></div>
 				<div class="row	">
-					<jsp:useBean	id="ComentariosService"	class="com.uniovi.sdi.ComentariosService"/>
 					<c:forEach	var="comentario"	begin="0"	items="${comentarios}">
 					<div class="col-xs-12	col-sm-6	col-md-4	col-lg-3">
 						<div>

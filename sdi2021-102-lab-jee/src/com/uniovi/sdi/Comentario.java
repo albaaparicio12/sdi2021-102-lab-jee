@@ -4,6 +4,9 @@ public class Comentario {
 	String texto;
 	String usuario;
 	
+	public Comentario() {
+		
+	}
 	public Comentario(String txt, String usu) {
 		setTexto(txt);
 		setUsuario(usu);
