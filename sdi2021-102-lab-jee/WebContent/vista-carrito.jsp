@@ -22,6 +22,10 @@
 					<tr>
 						<li>${par.key} - ${par.value} </li>
 					</tr>
+					<a href="eliminarProducto?producto=<c:out	value="${par.key}"/>"
+							class="btn	btn-default" >
+								Eliminar
+					</a>
 				</c:forEach>
 			</ul>
 		</div>
