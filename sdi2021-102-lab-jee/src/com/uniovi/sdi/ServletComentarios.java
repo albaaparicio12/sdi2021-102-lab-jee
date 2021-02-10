@@ -11,32 +11,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ServletProducto
+ * Servlet implementation class ServletComentarios
  */
-@WebServlet("/productos")
-public class ServletProducto extends HttpServlet {
+@WebServlet("/comentarios")
+public class ServletComentarios extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletProducto() {
+    public ServletComentarios() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Comentario> comentarios =	new LinkedList<Comentario>();
+		ComentariosService service = new ComentariosService();
 		
-		List<Producto>	productosTienda = new LinkedList<Producto>();
-		ProductosService service = new ProductosService();
+		comentarios = service.getComentarios();
 		
-		productosTienda = service.getProductos();
-		
-		request.setAttribute("productosTienda", productosTienda);
-		getServletContext().getRequestDispatcher("/vista-productos.jsp").forward(request,	
+		request.setAttribute("comentarios", comentarios);
+		getServletContext().getRequestDispatcher("/vista-comentarios.jsp").forward(request,	
 		response);
 	}
 
@@ -44,6 +42,7 @@ public class ServletProducto extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doGet(request, response);
 	}
 

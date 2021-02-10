@@ -16,14 +16,15 @@
 	<body>		
 		<!-- Contenido -->
 		<div class="container"	id="contenedor-principal">
-			<h2>Productos</h2>
+			<h2>Comentarios</h2>
+				
 				<div class="row	">
-					<c:forEach	var="producto"	begin="0"	items="${productosTienda}">
+					<jsp:useBean	id="ComentariosService"	class="com.uniovi.sdi.ComentariosService"/>
+					<c:forEach	var="comentario"	begin="0"	items="${comentarios}">
 					<div class="col-xs-12	col-sm-6	col-md-4	col-lg-3">
 						<div>
-							<img src="<c:out	value="${producto.imagen}"/>"			/>
-							<div><c:out	value="${producto.nombre}"/></div>
-								<c:out	value="${producto.precio}"/>€
+							<div><c:out	value="${comentario.autor}"/></div>
+								<c:out	value="${comentario.texto}"/>€
 						</div>
 					</div>
 					</c:forEach>

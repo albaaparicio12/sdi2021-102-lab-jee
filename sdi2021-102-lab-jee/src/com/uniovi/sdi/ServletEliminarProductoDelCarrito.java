@@ -1,7 +1,6 @@
 package com.uniovi.sdi;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -44,22 +43,6 @@ public class ServletEliminarProductoDelCarrito extends HttpServlet {
 				getServletContext().getRequestDispatcher("/vista-carrito.jsp").forward(request,	
 				response);
 				
-				response.setCharacterEncoding("UTF-8");
-				response.setContentType("text/html");
-				PrintWriter	out	=	response.getWriter();
-				out.println("<HTML>");
-				out.println("<HEAD><TITLE>Tienda	SDI:	carrito</TITLE></HEAD>");
-				out.println("<BODY>");
-				out.println(carritoEnHTML(carrito)+"<br>");
-				out.println("<a	href=\"index.jsp\">Volver</a></BODY></HTML>");
-	}
-	
-	private String carritoEnHTML(HashMap<String, Integer> carrito) {
-		String carritoEnHTML="";
-		
-		for(String key:carrito.keySet())
-			carritoEnHTML+="<p>["+key+"], "+carrito.get(key)+" unidades</p>";
-		return carritoEnHTML;
 	}
 
 	private void borrarDelCarrito(HashMap<String, Integer> carrito, String claveProducto) {

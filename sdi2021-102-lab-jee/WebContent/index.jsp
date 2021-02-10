@@ -28,6 +28,7 @@
 				<li><a href="login.jsp">Login</a></li>
 				<li><a href="admin.jsp">Administrar productos</a></li>		
 				<li><a href="productos">Productos</a></li>	
+				<li><a href="comentarios">Comentarios</a></li>	
 			</ul>
 			<div class="nav navbar-right">
 				<div class="center-block"> <jsp:getProperty name="contador"
