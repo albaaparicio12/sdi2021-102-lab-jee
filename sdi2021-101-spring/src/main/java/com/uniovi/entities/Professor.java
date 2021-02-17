@@ -8,7 +8,7 @@ public class Professor {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String DNI;
+	private String dni;
 	private String name;
 	private String surname;
 	private String category;
@@ -17,28 +17,27 @@ public class Professor {
 		
 	}
 	
-	public Professor(String dni, String name, String surname, String category, Long id) {
+	public Professor(String dni, String name, String surname, String category) {
 		super();
-		setDNI(dni);
+		setDni(dni);
 		setName(name);
 		setSurname(surname);
 		setCategory(category);
-		setId(id);
 	}
 	
-	public String getDNI() {
-		return DNI;
+	public String getDni() {
+		return dni;
 	}
 	
-	private void setDNI(String dNI) {
-		DNI = dNI;
+	public void setDni(String dNI) {
+		this.dni = dNI;
 	}
 	
 	public String getName() {
 		return name;
 	}
 	
-	private void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
@@ -46,7 +45,7 @@ public class Professor {
 		return surname;
 	}
 	
-	private void setSurname(String surname) {
+	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 	
@@ -54,7 +53,7 @@ public class Professor {
 		return category;
 	}
 	
-	private void setCategory(String category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
@@ -68,7 +67,7 @@ public class Professor {
 
 	@Override
 	public String toString() {
-		return "Professor [id=" + id + ", DNI=" + DNI + ", name=" + name + ", surname=" + surname + ", category="
+		return "Professor [id=" + id + ", DNI=" + dni + ", name=" + name + ", surname=" + surname + ", category="
 				+ category + "]";
 	}
 	

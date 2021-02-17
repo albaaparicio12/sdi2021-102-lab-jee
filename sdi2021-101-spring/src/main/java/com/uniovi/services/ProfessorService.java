@@ -6,31 +6,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.uniovi.entities.Professor;
-import com.uniovi.repositories.ProfessorRepository;
+import com.uniovi.repositories.ProfessorsRepository;
 
 @Service
 public class ProfessorService {
 	
 	@Autowired
-	private ProfessorRepository professorRepository;
+	private ProfessorsRepository professorsRepository;
 	
 	public List<Professor> getProfessors(){
 		List<Professor> professors = new ArrayList<Professor>();
-		professorRepository.findAll().forEach(professors::add);
+		professorsRepository.findAll().forEach(professors::add);
 		return professors;
 	}
 	
 	public Professor getProfessor(Long id){
-		return professorRepository.findById(id).get();
+		return professorsRepository.findById(id).get();
 	}
 	
 	public void addProfessor(Professor professor){
 		// Si en Id es null le asignamos el ultimo + 1 de la lista
-		professorRepository.save(professor);
+		professorsRepository.save(professor);
 	}
 	
 	public void deleteProfessor(Long id){
-		professorRepository.deleteById(id);
+		professorsRepository.deleteById(id);
 	}
 
 }
