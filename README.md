@@ -38,14 +38,14 @@ Prácticas de laboratorio de la asignatura Sistemas Distribuidos e Internet
 
 # Acceso a datos, Autenticación y control de acceso y Validación en el servidor
 
-⇒SDI-2021-101-3.1-Thymeleaf, fragmentos.
+⇒ SDI-2021-102-3.1-Thymeleaf, fragmentos.
 
-⇒ SDI-2021-101-3.2-Internacionalización.
+⇒ SDI-2021-102-3.2-Internacionalización.
 
-⇒ SDI-2021-101-3.3-Acceso a datos con entidades relacionadas.
+⇒ SDI-2021-102-3.3-Acceso a datos con entidades relacionadas.
 
-⇒ SDI-2021-101-3.4-Autenticación y control de acceso.
+⇒ SDI-2021-102-3.4-Autenticación y control de acceso.
 
-⇒ SDI-2021-101-3.5-Validación de datos en el servidor.
+⇒ SDI-2021-102-3.5-Validación de datos en el servidor.
 
-***(Todo se encuentra en la rama master)
+**(Todo se encuentra en la rama master)**
