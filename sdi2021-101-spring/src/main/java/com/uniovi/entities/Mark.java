@@ -11,14 +11,34 @@ public class Mark {
 	private String description;
 	private Double score;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	public Mark(){
 		
 	}
 	
 	public Mark(long l, String string, double d) {
+		super();
 		setDescription(string);
 		setId(l);
 		setScore(d);
+	}
+	
+	public Mark(String string, double d, User user) {
+		super();
+		setDescription(string);
+		setScore(d);
+		setUser(user);
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Long getId() {
