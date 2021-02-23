@@ -12,10 +12,12 @@ public class User {
 	private long id;
 	@Column(unique=true)
 	private String dni;
+	
 	private String name;
 	private String lastName;
 	private String role;	
 	private String password;
+	
 	@Transient
 	private String passwordConfirm;	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
