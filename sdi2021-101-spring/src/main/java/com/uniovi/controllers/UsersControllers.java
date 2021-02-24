@@ -37,9 +37,19 @@ public class UsersControllers {
 	}
 	
 	@RequestMapping(value="/user/add", method=RequestMethod.POST )
-	public String setUser(@ModelAttribute User user){
-		usersService.addUser(user);
-		return "redirect:/user/list";
+	public String setUser(@Validated User user, BindingResult result){
+		signUpFormValidator.validate(user,result);
+		 if(result.hasErrors())
+			 return "user/add";
+		 usersService.addUser(user);
+		 securityService.autoLogin(user.getDni(), user.getPasswordConfirm());
+		 return "redirect:home";
+	}
+	
+	@RequestMapping(value="/user/add", method=RequestMethod.GET )
+	public String setUser(Model model){
+		model.addAttribute("user", new User());
+		return "user/add";
 	}
 	
 	@RequestMapping("/user/details/{id}" )

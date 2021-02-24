@@ -12,23 +12,23 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="/">Home</a></li>
+				<li><a href="/" th:text="#{home.message}">Home</a></li>
 				<li id= "marks-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{marks.message}">
 						Gestión de notas <span class="caret"></span>
 					</a>
 					<ul class= "dropdown-menu">
-						<li><a href="/mark/add">Agregar Nota</a></li>
-						<li><a href="/mark/list">Ver Notas</a></li>
+						<li><a href="/mark/add" th:text="#{marks.message.add}">Agregar Nota</a></li>
+						<li><a href="/mark/list" th:text="#{marks.message.see}">Ver Notas</a></li>
 					</ul>
 				</li>
 				<li id= "users-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{users.message}">
 						Gestión de usuarios <span class="caret"></span>
 					</a>
 					<ul class= "dropdown-menu">
-						<li><a href="/user/add">Agregar usuario</a></li>
-						<li><a href="/user/list">Ver Usuarios</a></li>
+						<li><a href="/user/add" th:text="#{users.message.add}">Agregar usuario</a></li>
+						<li><a href="/user/list" th:text="#{users.message.see}">Ver Usuarios</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -51,6 +51,11 @@
 								 <img th:src="@{/img/if_spain_flag.png}" style="border: 0; float: left; margin-right: 15px" /> 
 								 <span th:text="#{language.es}">Español</span>
 							 </a>
+						 </li>
+						 <li>
+						 	<a id="btnJapanese" value="JP"> 
+								<span th:text="#{language.jp}">Japonés</span>
+							</a>
 						 </li>
 					 </ul>
 				</li>

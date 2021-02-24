@@ -6,10 +6,10 @@
 		<nav th:replace="fragments/nav"/>
 		
 		<div class="container">
-		  <h2>Agregar Nota</h2>
+		  <h2 th:text="#{mark.add.title}">Agregar Nota</h2>
 		  <form class="form-horizontal" method="post" action="/mark/add">
 			 <div class="form-group">
-				 <label class="control-label col-sm-2" for="user">Alumno:</label>
+				 <label class="control-label col-sm-2" for="user" th:text="#{mark.add.student}">Alumno:</label>
 				 <div class="col-sm-10" th:if="${usersList != null and not #lists.isEmpty(usersList)}">
 					 <select id="user" class="form-control" name="user">
 						 <option th:each="user : ${usersList}"
@@ -22,13 +22,13 @@
 			 </div>
 		 
 		    <div class="form-group">
-		      <label class="control-label col-sm-2" for="description">Descripcion:</label>
+		      <label class="control-label col-sm-2" for="description" th:text="#{mark.list.description}">Descripcion:</label>
 		      <div class="col-sm-10">
 		        <input type="text" class="form-control" name="description" placeholder="Ejemplo Ejercicio 1" required="true" />
 		      </div>
 		    </div>
 		    <div class="form-group">
-		      <label class="control-label col-sm-2" for="pwd">Puntuación:</label>
+		      <label class="control-label col-sm-2" for="pwd" th:text="#{mark.list.mark}">Puntuación:</label>
 		      <div class="col-sm-10">          
 		        <input type="number" class="form-control" name="score" placeholder="Enetre 0 y 10" required="true" />
 		      </div>
