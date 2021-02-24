@@ -2,6 +2,8 @@ package com.uniovi.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +33,9 @@ public class MarkService {
 	
 	public void deleteMark(Long id){ 
 		marksRepository.deleteById(id);
+	}
+	
+	public Optional<Mark> getMarkById(Long id) {
+		return marksRepository.findById(id);
 	}
 }

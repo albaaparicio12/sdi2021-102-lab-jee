@@ -3,11 +3,14 @@ package com.uniovi.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.uniovi.entities.Mark;
 import com.uniovi.services.MarkService;
 import com.uniovi.services.UsersService;
+import com.uniovi.validators.MarkValidator;
 
 @Controller
 public class MarksControllers {
@@ -16,6 +19,8 @@ public class MarksControllers {
 	private MarkService marksService;
 	@Autowired
 	private UsersService usersService;
+	@Autowired
+	private MarkValidator markValidator;
 
 	@RequestMapping("/mark/list") 
 	public String getList(Model model){ 
@@ -24,10 +29,23 @@ public class MarksControllers {
 		}
 	
 	@RequestMapping(value="/mark/add", method=RequestMethod.POST )
-	public String setMark(@ModelAttribute Mark mark){ 
-		marksService.addMark(mark); 
+	public String setMark(@Validated Mark mark,Model model, BindingResult result){ 
+		markValidator.validate(mark, result);
+		model.addAttribute("usersList", usersService.getUsers());
+		if(result.hasErrors()) {
+			return"/mark/add";
+		}
+		marksService.addMark(mark);		
 		return "redirect:/mark/list";
 	}
+	
+	@RequestMapping(value="/mark/add", method=RequestMethod.GET )
+	public String setMark(Model model){ 
+		model.addAttribute("mark", new Mark());
+		model.addAttribute("usersList", usersService.getUsers());
+		return "mark/add";
+	}
+
 	
 	@RequestMapping("/mark/details/{id}") 
 	public String getDetail(Model model, @PathVariable Long id){ 
@@ -40,13 +58,7 @@ public class MarksControllers {
 		 marksService.deleteMark(id);
 		 return "redirect:/mark/list";
 	}
-	
-	@RequestMapping(value="/mark/add")
-	public String getMark(Model model){
-		model.addAttribute("usersList", usersService.getUsers());
-		return "mark/add";
-	}
-	
+		
 	@RequestMapping(value="/mark/edit/{id}")
 	public String getEdit(Model model, @PathVariable Long id){
 		model.addAttribute("mark", marksService.getMark(id));
