@@ -29,7 +29,7 @@ public class SignUpFormValidator implements Validator {
 			errors.rejectValue("dni", "Error.signup.dni.duplicate");		
 		
 		if (user.getName().length() < 4 || user.getName().length() > 24) 
-			errors.rejectValue("name", "Error.signup.name.length");
+			errors.rejectValue("name", "Error.name.length");
 				
 		if (user.getLastName().length() < 5 || user.getLastName().length() > 24) 
 			errors.rejectValue("lastName", "Error.signup.lastName.length");

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head th:replace="fragments/head"/>
+	<body>
+		<!-- Barra de Navegación superior -->
+		<nav th:replace="fragments/nav"/>
+		
+		<div class="container">
+		  <h2 th:text="#{department.details.title}"></h2>   
+		  <div class="panel panel-default">
+			 <div class="panel-heading" th:text="#{department.name}"></div>
+			 <div class="panel-body" th:text="${department.name}" >
+			 </div>
+		  </div>  
+		  <div class="panel panel-default">
+			 <div class="panel-heading" th:text="#{department.description}"></div>
+			 <div class="panel-body" th:text="${department.description}" >
+			 </div>
+		  </div>                                                                       
+		</div>
+	</body>
+	<footer th:replace="fragments/footer"/>
+</html>

@@ -16,7 +16,7 @@ public class MarkValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		Mark mark = (Mark) target;
 		if (mark.getDescription().length() < 20) {
-			errors.rejectValue("description", "Error.addMark.description");
+			errors.rejectValue("description", "Error.description");
 		}
 		if (mark.getScore()<0 || mark.getScore()>10) {
 			errors.rejectValue("score", "Error.addMark.score");

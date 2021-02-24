@@ -6,21 +6,21 @@
 		<nav th:replace="fragments/nav"/>
 		
 		<div class="container">
-		  <h2>Detalles del usuario</h2>   
+		  <h2 th:text="#{user.details.title}">Detalles del usuario</h2>   
 		  <div class="panel panel-default">
-			 <div class="panel-heading">DNI</div>
+			 <div class="panel-heading" th:text="#{user.list.DNI}">DNI</div>
 			 <div class="panel-body" th:text="${user.dni}" >
 				99999999X
 			 </div>
 		  </div>                                                                         
 		  <div class="panel panel-default">
-			  <div class="panel-heading">Nombre</div>
+			  <div class="panel-heading" th:text="#{user.list.name}">Nombre</div>
 			  <div class="panel-body" th:text="${user.name}">
 				Pedro
 			  </div>
 		  </div>
 		  <div class="panel panel-default">
-			  <div class="panel-heading">Apellidos</div>
+			  <div class="panel-heading" th:text="#{user.list.surname}">Apellidos</div>
 			  <div class="panel-body" th:text="${user.lastName}">
 				Sanchez
 			  </div>

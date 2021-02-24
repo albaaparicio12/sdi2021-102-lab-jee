@@ -29,7 +29,7 @@ public class MarksControllers {
 		}
 	
 	@RequestMapping(value="/mark/add", method=RequestMethod.POST )
-	public String setMark(@Validated Mark mark,Model model, BindingResult result){ 
+	public String setMark(@Validated Mark mark, Model model, BindingResult result){ 
 		markValidator.validate(mark, result);
 		model.addAttribute("usersList", usersService.getUsers());
 		if(result.hasErrors()) {

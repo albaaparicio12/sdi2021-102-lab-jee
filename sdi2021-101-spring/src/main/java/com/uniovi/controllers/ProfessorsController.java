@@ -7,14 +7,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.uniovi.entities.Professor;
+import com.uniovi.services.DepartmentService;
 import com.uniovi.services.ProfessorService;
 import com.uniovi.validators.ProfessorValidator;
 
 @Controller
 public class ProfessorsController {
 	
-	@Autowired //Inyectar el servicio 
+	@Autowired 
 	private ProfessorService professorService;
+	@Autowired 
+	private DepartmentService departmentService;
 	@Autowired
 	private ProfessorValidator professorValidator;
 
@@ -26,8 +29,9 @@ public class ProfessorsController {
 	}
 	
 	@RequestMapping(value="/professor/add", method=RequestMethod.POST )
-	public String setProfessor(@Validated Professor professor, BindingResult result){ 
+	public String setProfessor(@Validated Professor professor,Model model, BindingResult result){ 
 		professorValidator.validate(professor, result);
+		model.addAttribute("departmentsList", departmentService.getDepartments());
 		if(result.hasErrors())
 			return "/professor/add";
 		professorService.addProfessor(professor);
@@ -37,6 +41,7 @@ public class ProfessorsController {
 	@RequestMapping(value="/professor/add", method=RequestMethod.GET )
 	public String setProfessor(Model model){ 
 		model.addAttribute("professor", new Professor());
+		model.addAttribute("departmentsList", departmentService.getDepartments());
 		return "professor/add";
 	}
 	
@@ -60,6 +65,7 @@ public class ProfessorsController {
 	@RequestMapping(value="/professor/edit/{id}")
 	public String getEdit(Model model, @PathVariable Long id){
 		model.addAttribute("professor", professorService.getProfessor(id));
+		model.addAttribute("departmentsList", departmentService.getDepartments());
 		return "professor/edit";
 	}
 	

@@ -31,6 +31,24 @@
 						<li><a href="/user/list" th:text="#{users.message.see}">Ver Usuarios</a></li>
 					</ul>
 				</li>
+				<li id= "professors-menu" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{professors.message}">
+						Gestión de profesores <span class="caret"></span>
+					</a>
+					<ul class= "dropdown-menu">
+						<li><a href="/professor/add" th:text="#{professors.message.add}">Agregar Profesor</a></li>
+						<li><a href="/professor/list" th:text="#{professors.message.see}">Ver Profesor</a></li>
+					</ul>
+				</li>
+				<li id= "departments-menu" class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{departments.message}">
+						Gestión de usuarios <span class="caret"></span>
+					</a>
+					<ul class= "dropdown-menu">
+						<li><a href="/department/add" th:text="#{departments.message.add}">Agregar Departamento</a></li>
+						<li><a href="/department/list" th:text="#{departments.message.see}">Ver Departamentos</a></li>
+					</ul>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
