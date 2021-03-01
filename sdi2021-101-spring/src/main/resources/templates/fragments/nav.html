@@ -11,42 +11,24 @@
 			<img src="/img/student-48.png" alt="logo" />
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 				<li><a href="/" th:text="#{home.message}">Home</a></li>
 				<li id= "marks-menu" class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{marks.message}">
 						Gestión de notas <span class="caret"></span>
 					</a>
 					<ul class= "dropdown-menu">
-						<li><a href="/mark/add" th:text="#{marks.message.add}">Agregar Nota</a></li>
+						<li sec:authorize="hasRole('ROLE_PROFESSOR')"><a href="/mark/add" th:text="#{marks.message.add}">Agregar Nota</a></li>
 						<li><a href="/mark/list" th:text="#{marks.message.see}">Ver Notas</a></li>
 					</ul>
 				</li>
-				<li id= "users-menu" class="dropdown">
+				<li id= "users-menu" class="dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{users.message}">
 						Gestión de usuarios <span class="caret"></span>
 					</a>
 					<ul class= "dropdown-menu">
 						<li><a href="/user/add" th:text="#{users.message.add}">Agregar usuario</a></li>
 						<li><a href="/user/list" th:text="#{users.message.see}">Ver Usuarios</a></li>
-					</ul>
-				</li>
-				<li id= "professors-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{professors.message}">
-						Gestión de profesores <span class="caret"></span>
-					</a>
-					<ul class= "dropdown-menu">
-						<li><a href="/professor/add" th:text="#{professors.message.add}">Agregar Profesor</a></li>
-						<li><a href="/professor/list" th:text="#{professors.message.see}">Ver Profesor</a></li>
-					</ul>
-				</li>
-				<li id= "departments-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{departments.message}">
-						Gestión de usuarios <span class="caret"></span>
-					</a>
-					<ul class= "dropdown-menu">
-						<li><a href="/department/add" th:text="#{departments.message.add}">Agregar Departamento</a></li>
-						<li><a href="/department/list" th:text="#{departments.message.see}">Ver Departamentos</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -77,18 +59,24 @@
 						 </li>
 					 </ul>
 				</li>
-				<li>
+				<li sec:authorize="!isAuthenticated()">
 					<a href="/signup" th:text="#{signup.message}">
 						<span class="glyphicon glyphicon-user"></span>
 						Registrate
 					</a>
 				</li>
-				<li>
+				<li sec:authorize="!isAuthenticated()">
 					<a href="/login" th:text="#{login.message}">
 						<span class="glyphicon glyphicon-log-in"></span>
 						Identifícate
 					</a>
 				</li>
+				<li sec:authorize="isAuthenticated()">
+					 <a href="/logout" >
+						 <span class="glyphicon glyphicon-log-out"></span>
+						 Desconectar
+					 </a>
+				 </li>
 			</ul>
 		</div>
 	</div> 
