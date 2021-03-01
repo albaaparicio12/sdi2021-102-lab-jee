@@ -1,6 +1,6 @@
 package com.uniovi.controllers;
 
-import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.uniovi.entities.Mark;
+import com.uniovi.entities.User;
 import com.uniovi.services.MarkService;
 import com.uniovi.services.UsersService;
 import com.uniovi.validators.MarkValidator;
@@ -23,14 +24,15 @@ public class MarksControllers {
 	private UsersService usersService;
 	@Autowired
 	private MarkValidator markValidator;
-	@Autowired
-	private HttpSession httpSession;
 
-	@RequestMapping("/mark/list") 
-	public String getList(Model model){ 
-		model.addAttribute("markList",marksService.getMarks());
-		return "mark/list"; 
+	@RequestMapping("/mark/list")
+	public String getList(Model model, Principal principal){
+		String dni = principal.getName(); // DNI es el name de la autenticación
+		User user = usersService.getUserByDni(dni);
+		model.addAttribute("markList", marksService.getMarksForUser(user));
+		return "mark/list";
 	}
+
 	
 	@RequestMapping(value="/mark/add", method=RequestMethod.POST )
 	public String setMark(@Validated Mark mark, Model model, BindingResult result){ 
@@ -81,8 +83,10 @@ public class MarksControllers {
 	}
 	
 	@RequestMapping("/mark/list/update")
-	public String updateList(Model model){
-		model.addAttribute("markList", marksService.getMarks() );
+	public String updateList(Model model, Principal principal){
+		String dni = principal.getName(); // DNI es el name de la autenticación
+		User user = usersService.getUserByDni(dni);
+		model.addAttribute("markList", marksService.getMarksForUser(user));
 		return "mark/list :: tableMarks";
 	}
 	
