@@ -36,8 +36,11 @@ public class UsersControllers {
 
 	
 	@RequestMapping("/user/list" )
-	public String getListado(Model model){
-		model.addAttribute("usersList", usersService.getUsers());
+	public String getListado(Model model, @RequestParam(value= "", required = false) String searchText){
+		if(searchText != null && !searchText.isEmpty()) 
+			model.addAttribute("usersList", usersService.searchByNameOrSurnameForUser(searchText));
+		else
+			model.addAttribute("usersList", usersService.getUsers());
 		return "user/list";
 	}
 

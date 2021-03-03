@@ -3,7 +3,7 @@ package com.uniovi.entities;
 import javax.persistence.*;
 
 @Entity
-public class Professor {
+public class Professor extends User {
 	
 	@Id
 	@GeneratedValue
@@ -71,7 +71,7 @@ public class Professor {
 		this.category = category;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 

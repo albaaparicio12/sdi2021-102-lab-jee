@@ -14,6 +14,8 @@ public class InsertSampleDataService {
 	@Autowired
 	private UsersService usersService;
 	@Autowired
+	private ProfessorService professorService;
+	@Autowired
 	private RolesService rolesService;
 	
 	@SuppressWarnings({ "serial", "rawtypes", "unchecked" })
@@ -77,6 +79,13 @@ public class InsertSampleDataService {
 		};
 		user4.setMarks(user4Marks);
 		
+		/*
+		Professor pr1 = new Professor("99999993D", "Marta", "Almonte","Biología");
+		Professor pr2 = new Professor("99999977E", "Pelayo", "Valdes", "Matemáticas");
+		
+		professorService.addProfessor(pr1);
+		professorService.addProfessor(pr2);
+		*/
 		usersService.addUser(user1);
 		usersService.addUser(user2);
 		usersService.addUser(user3);
