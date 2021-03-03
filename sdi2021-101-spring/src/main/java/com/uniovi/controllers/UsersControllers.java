@@ -36,17 +36,20 @@ public class UsersControllers {
 
 	
 	@RequestMapping("/user/list" )
-	public String getListado(Model model, @RequestParam(value= "", required = false) String searchText){
+	public String getListado(Model model,Pageable pageable, @RequestParam(value= "", required = false) String searchText){
+		Page<User> users = new PageImpl<User>(new LinkedList<User>());
 		if(searchText != null && !searchText.isEmpty()) 
-			model.addAttribute("usersList", usersService.searchByNameOrSurnameForUser(searchText));
+			users = usersService.searchByNameOrSurnameForUser(pageable, searchText);
 		else
-			model.addAttribute("usersList", usersService.getUsers());
+			users = usersService.getUsers(pageable);
+		model.addAttribute("usersList",users.getContent());
+		model.addAttribute("page", users);
 		return "user/list";
 	}
 
 	@RequestMapping(value="/user/add")
-	public String getUser(Model model){
-		model.addAttribute("usersList", usersService.getUsers());
+	public String getUser(Model model, Pageable pageable){
+		model.addAttribute("usersList", usersService.getUsers(pageable));
 		model.addAttribute("rolesList", rolesService.getRoles());
 		return "user/add";
 	}
@@ -133,8 +136,8 @@ public class UsersControllers {
 	}
 	
 	@RequestMapping("/user/list/update")
-	public String updateList(Model model){
-		model.addAttribute("usersList", usersService.getUsers()); 
+	public String updateList(Model model, Pageable pageable){
+		model.addAttribute("usersList", usersService.getUsers(pageable)); 
 		return "user/list :: tableUsers";
 	}
 }

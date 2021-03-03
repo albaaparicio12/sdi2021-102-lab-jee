@@ -1,6 +1,11 @@
 package com.uniovi.controllers;
 
+import java.util.LinkedList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import com.uniovi.entities.Professor;
 import com.uniovi.services.DepartmentService;
 import com.uniovi.services.ProfessorService;
-import com.uniovi.services.RolesService;
 import com.uniovi.validators.ProfessorValidator;
 
 @Controller
@@ -21,14 +25,14 @@ public class ProfessorsController {
 	private DepartmentService departmentService;
 	@Autowired
 	private ProfessorValidator professorValidator;
-	@Autowired
-	private RolesService rolesService;
 
 	@RequestMapping("/professor/list") 
-	public String getList(Model model){ 
-		model.addAttribute("professorList", professorService.getProfessors()); 
+	public String getList(Model model, Pageable pageable){ 
+		Page<Professor> professors = new PageImpl<Professor>(new LinkedList<Professor>());
+		professors = professorService.getProfessors(pageable);
+		model.addAttribute("professorList", professors.getContent()); 
+		model.addAttribute("page", professors);
 		return "professor/list";
-		
 	}
 	
 	@RequestMapping(value="/professor/add", method=RequestMethod.POST )
@@ -45,7 +49,6 @@ public class ProfessorsController {
 	public String setProfessor(Model model){ 
 		model.addAttribute("professor", new Professor());
 		model.addAttribute("departmentsList", departmentService.getDepartments());
-		model.addAttribute("rolesList", rolesService.getRoles());
 		return "professor/add";
 	}
 	

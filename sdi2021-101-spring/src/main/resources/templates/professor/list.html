@@ -25,16 +25,17 @@
 	  <tr th:each="professor : ${professorList}">
 	    <td th:text="${professor.id}"> 1</td>
 	    <td th:text="${professor.name}"> Ejercicio 1</td>
-	    <td th:text="${professor.surname}">10</td>
+	    <td th:text="${professor.lastName}">10</td>
 	    <td th:text="${professor.dni}">10</td>
 	    <td th:text="${professor.category}">10</td>
-	    <td><a sec:authorize="hasRole('ROLE_ADMIN' or 'ROLE_PROFESSOR')" th:href="${'/professor/details/' + professor.id}" th:text="#{professor.list.details}">detalles</a></td>
+	    <td><a sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_PROFESSOR')" th:href="${'/professor/details/' + professor.id}" th:text="#{professor.list.details}">detalles</a></td>
 	    <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/professor/edit/' + professor.id}" th:text="#{professor.list.modify}">modificar</a></td>
 	    <td><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="${'/professor/delete/' + professor.id}" th:text="#{professor.list.delete}">eliminar</a></td>
 	  </tr>
 	</tbody>
   </table>
   </div>
+  <footer th:replace="fragments/pagination"/>
 </div>
 
 

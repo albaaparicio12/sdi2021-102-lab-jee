@@ -29,8 +29,8 @@ public class ProfessorValidator implements Validator{
 		if (professor.getName().length() < 4 || professor.getName().length() > 24) {
 			errors.rejectValue("name", "Error.signup.name.length");
 		}
-		if (professor.getSurname().length() < 5 || professor.getSurname().length() > 24) {
-			errors.rejectValue("surname", "Error.signup.lastName.length");
+		if (professor.getLastName().length() < 5 || professor.getLastName().length() > 24) {
+			errors.rejectValue("lastName", "Error.signup.lastName.length");
 		}
 		if (professor.getCategory().length() < 5 || professor.getCategory().length() > 24) {
 			errors.rejectValue("category", "Error.signup.category.length");

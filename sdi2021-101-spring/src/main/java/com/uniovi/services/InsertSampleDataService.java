@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.uniovi.entities.Mark;
+import com.uniovi.entities.Professor;
 import com.uniovi.entities.User;
 
 @Service
@@ -79,13 +80,21 @@ public class InsertSampleDataService {
 		};
 		user4.setMarks(user4Marks);
 		
-		/*
+		
 		Professor pr1 = new Professor("99999993D", "Marta", "Almonte","Biología");
 		Professor pr2 = new Professor("99999977E", "Pelayo", "Valdes", "Matemáticas");
+		Professor pr3 = new Professor("99929393D", "Lucia", "Almonte","Biología");
+		Professor pr4 = new Professor("99523977E", "Guillermo", "Valdes", "Matemáticas");
+		Professor pr5 = new Professor("99611993D", "Eric", "Almonte","Biología");
+		Professor pr6 = new Professor("99632127E", "Alba", "Valdes", "Matemáticas");
 		
 		professorService.addProfessor(pr1);
 		professorService.addProfessor(pr2);
-		*/
+		professorService.addProfessor(pr3);
+		professorService.addProfessor(pr4);
+		professorService.addProfessor(pr5);
+		professorService.addProfessor(pr6);
+		
 		usersService.addUser(user1);
 		usersService.addUser(user2);
 		usersService.addUser(user3);

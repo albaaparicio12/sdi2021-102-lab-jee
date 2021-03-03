@@ -3,14 +3,14 @@ package com.uniovi.entities;
 import javax.persistence.*;
 
 @Entity
-public class Professor extends User {
+public class Professor{
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 	private String dni;
 	private String name;
-	private String surname;
+	private String lastName;
 	private String category;
 	
 	@ManyToOne
@@ -25,7 +25,7 @@ public class Professor extends User {
 		super();
 		setDni(dni);
 		setName(name);
-		setSurname(surname);
+		setLastName(surname);
 		setCategory(category);
 	}
 	
@@ -33,7 +33,7 @@ public class Professor extends User {
 		super();
 		setDni(dni);
 		setName(name);
-		setSurname(surname);
+		setLastName(surname);
 		setCategory(category);
 		setDepartment(department);
 	}
@@ -55,12 +55,12 @@ public class Professor extends User {
 		this.name = name;
 	}
 	
-	public String getSurname() {
-		return surname;
+	public String getLastName(){
+		return lastName;
 	}
 	
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 	public String getCategory() {
@@ -75,7 +75,7 @@ public class Professor extends User {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -89,7 +89,7 @@ public class Professor extends User {
 
 	@Override
 	public String toString() {
-		return "Professor [id=" + id + ", dni=" + dni + ", name=" + name + ", surname=" + surname + ", category="
+		return "Professor [id=" + id + ", dni=" + dni + ", name=" + name + ", surname=" + lastName + ", category="
 				+ category + ", department=" + department + "]";
 	}
 
