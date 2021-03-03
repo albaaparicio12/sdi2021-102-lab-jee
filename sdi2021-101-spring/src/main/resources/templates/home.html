@@ -14,7 +14,7 @@
 			<p>
 			 Notas del usuario
 			</p>						
-			<table id="tableMarks" th:replace="fragments/markList" />	
+			<table id="tableMarks" th:fragment="tableMarks" th:replace="fragments/markList" />	
 			<footer th:replace="fragments/pagination"/>					
 		</div>
 		<footer th:replace="fragments/footer"/>

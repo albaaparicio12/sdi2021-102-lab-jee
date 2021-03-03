@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.uniovi.entities.Professor;
 import com.uniovi.services.DepartmentService;
 import com.uniovi.services.ProfessorService;
+import com.uniovi.services.RolesService;
 import com.uniovi.validators.ProfessorValidator;
 
 @Controller
@@ -20,6 +21,8 @@ public class ProfessorsController {
 	private DepartmentService departmentService;
 	@Autowired
 	private ProfessorValidator professorValidator;
+	@Autowired
+	private RolesService rolesService;
 
 	@RequestMapping("/professor/list") 
 	public String getList(Model model){ 
@@ -42,6 +45,7 @@ public class ProfessorsController {
 	public String setProfessor(Model model){ 
 		model.addAttribute("professor", new Professor());
 		model.addAttribute("departmentsList", departmentService.getDepartments());
+		model.addAttribute("rolesList", rolesService.getRoles());
 		return "professor/add";
 	}
 	

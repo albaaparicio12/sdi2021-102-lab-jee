@@ -37,7 +37,6 @@ public class UsersService {
 	public User getUserByDni(String dni) {
 		return usersRepository.findByDni(dni);
 	}
-
 	
 	public void deleteUser(Long id) {
 		usersRepository.deleteById (id);
