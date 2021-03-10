@@ -182,8 +182,7 @@ public class NotaneitorTests {
 	//PRN. Loguearse y desconexión con usuario de ROL usuario (99999990A/123456)
 		@Test
 		public void PR011() {
-			PO_PrivateView.login(driver, "99999988F");
-			PO_View.checkElement(driver, "text", "Notas del usuario");
+			PO_PrivateView.login(driver, "99999988F", "Notas del usuario");
 			
 			PO_PrivateView.logout(driver,"Identifícate");
 			
@@ -192,8 +191,7 @@ public class NotaneitorTests {
 	//PR12. Loguearse, comprobar que se visualizan 4 filas de notas y desconectarse usando el rol de estudiante.
 	@Test
 	public void PR12() {
-		PO_PrivateView.login(driver, "99999990A");
-		PO_View.checkElement(driver, "text", "Notas del usuario");
+		PO_PrivateView.login(driver, "99999990A", "Notas del usuario");
 		//Contamos el número de filas de notas
 		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free",
 		"//tbody/tr", PO_View.getTimeout());
@@ -206,8 +204,7 @@ public class NotaneitorTests {
 	//P13. Ver la lista de Notas.
 	@Test
 	public void PR13() {
-		PO_PrivateView.login(driver, "99999990A");
-		PO_View.checkElement(driver, "text", "Notas del usuario");
+		PO_PrivateView.login(driver, "99999990A", "Notas del usuario");
 		
 		SeleniumUtils.esperarSegundos(driver, 1);
 		//Contamos las notas
@@ -225,7 +222,7 @@ public class NotaneitorTests {
 	//P14. Esta prueba podría encapsularse mejor ...
 	@Test
 	public void PR14() {
-		PO_PrivateView.login(driver, "99999993D");
+		PO_PrivateView.login(driver, "99999993D", "Notas del usuario");
 				
 		List<WebElement> elementos = PO_PrivateView.goToPage(driver, "//a[contains(@href, 'mark/add')]");		
 		
@@ -245,7 +242,7 @@ public class NotaneitorTests {
 	//PRN. Ver la lista de Notas.
 	@Test
 	public void PR15() {
-		PO_PrivateView.login(driver, "99999993D");
+		PO_PrivateView.login(driver, "99999993D", "Notas del usuario");
 		
 		List<WebElement> elementos = PO_PrivateView.goToPage(driver, "//a[contains(@href,'mark/list')]");
 		
@@ -268,7 +265,22 @@ public class NotaneitorTests {
 		PO_PrivateView.logout(driver,"Identifícate");
 	}
 	
+	@Test
+	public void PR16() {
+		PO_PrivateView.signup(driver, "77777678A", "Josefo", "Perez", "77777","77777", "Notas del usuario");	
+
+	}
 	
+	@Test
+	public void PR17() {
+		PO_PrivateView.signup(driver, "77777678A", "Jo", "Perez", "77777","77777", "Notas del usuario");	
+		PO_RegisterView.checkKey(driver,"Error.signup.name.length",PO_Properties.getSPANISH());
+	}
 	
-	
+	@Test
+	public void PR18() {
+		PO_PrivateView.login(driver, "99999990A", "Notas del usuario");
+		driver.navigate().to(URL + "/user/add");
+		PO_View.checkElement(driver, "text", "Access is denied");
+	}
 }
